@@ -4,8 +4,20 @@ class BoardNode
   attr_accessor :mark, :adjacents, :flagged, :bomb
   attr_reader :children_with_bombs
 
+  ADJACENTS = [
+    # clockwise order
+    [-1, -1],
+    [0, -1],
+    [1, -1],
+    [1, 0],
+    [1, 1],
+    [0, 1],
+    [-1, 1],
+    [-1, 0]
+    ]
+
   def initialize(board, pos)
-    @position = pos
+    @pos = pos
     @adjacents = nil
     @board = board
 
@@ -17,17 +29,34 @@ class BoardNode
     @bomb = false
     @children_with_bombs = 0
 
-
-    #fix game setup
   end
 
-  # visual aspects of a node:
-  # => number display (including 0, which is blank and clicked?)
-  # => flag
-  # => unclicked
-  #
-  # bomb or not
+  def children_with_bombs
+    self.children.each do |child|
+      if child.bomb
+        @children_with_bombs += 1
+      end
+    end
+    @children_with_bombs
+  end
 
+  def children
+    # returns an array of the positions of all adjacent cells
+    x,y = @pos[0], @pos[1]
+    children = []
+
+    # check each position
+    ADJACENTS.each do |pos_calc|
+       new_x = x + pos_calc[0]
+       new_y = y + pos_calc[1]
+       if @board.is_on_board?([new_x, new_y])
+        children << @board[[new_x, new_y]]
+      end
+    end
+    # if it's on the board, add it
+
+    children
+  end
 
   def to_s
     # this is where rendering happens
@@ -47,24 +76,14 @@ class Minesweeper
   BOMBS = 10
 
   # TO DO: make alternate displays / render for user and testers.
-  ADJACENTS = [
-    # clockwise order
-    [-1, -1],
-    [0, -1],
-    [1, -1],
-    [1, 0],
-    [1, 1],
-    [0, 1],
-    [-1, 1],
-    [-1, 0]
-    ]
 
 
-  attr_accessor :board
+
+  attr_accessor :board, :bomb_splosion
 
   def initialize
     @board = Board.new # take this out after testing
-
+    @bomb_splosion = false
 
   end
 
@@ -78,12 +97,13 @@ class Minesweeper
       take_turn
 
     end
+    # uncover everything
 
 
   end
 
   def game_over?
-    won || bomb_splosion
+    bomb_splosion || won
   end
 
   def take_turn
@@ -97,15 +117,27 @@ class Minesweeper
 
     case move
     when 1 # uncover
-      # what's there?
-      # if  bomb, die
-      # => and display board
-      if @board[position] == :B
+      if @board[position].bomb
+        @bomb_splosion = true
+        puts "It's a bomb!"
+      else
+        @board[position].revealed = true
+        # check children for bombs
+        # display number
+        # bombs_count = 0
+        children = children(pos)
+        until children.empty?
+          child = children.shift
+
+          if is_bomb?(child)
+            return node if node.value == target
+          else
+            return node if prc.call(node)
+          end
+
+          children.concat(children(child))
+        end
       end
-      # if not, reveal, and reveal children until children have bombs
-      # => in which case, show number
-      # if on node, display # of children with bombs
-      # blank == no children with bombs
 
     when 2 # flag
       # mark a flag
@@ -115,14 +147,6 @@ class Minesweeper
 
   end
 
-  def is_bomb?(pos)
-    @board[pos].mark == :B ? true : false
-  end
-
-  def set_mark(pos, mark)
-    @board[pos].mark = mark
-  end
-
   def board_setup
     # pick number of bombs
     # this can be random, or based on difficulty, or whatever
@@ -130,7 +154,7 @@ class Minesweeper
     # expert would be 64
     (0..8).each do |row|
       (0..8).each do |col|
-        @board[[row, col]] = BoardNode.new(@board, [[row, col]])
+        @board[[row, col]] = BoardNode.new(@board, [row, col])
       end
     end
     make_bombs
@@ -158,21 +182,7 @@ class Minesweeper
     #
   end
 
-  def children(start_pos)
-    # returns an array of the positions of all adjacent cells
-    x,y = start_pos[0], start_pos[1]
-    children = []
 
-    # check each position
-    ADJACENTS.each do |pos_calc|
-      unless x + pos_calc[0] < 0 || y + pos_calc[1] < 0
-        children << [x + pos_calc[0], y + pos_calc[1]]
-      end
-    end
-    # if it's on the board, add it
-
-    children
-  end
 
   #we are going to re-write this
   def bfs(pos, &prc)

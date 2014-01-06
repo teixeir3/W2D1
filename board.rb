@@ -37,6 +37,14 @@ class Board
     self[pos].nil?
   end
 
+  def is_on_board?(pos)
+    x,y = pos[0], pos[1]
+    if x < 0 || x > 8 || y < 0 || y > 8
+      false
+    else
+      true
+    end
+  end
 
   def won?
     ### won when:
