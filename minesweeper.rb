@@ -1,7 +1,7 @@
 require './board.rb'
 
 class BoardNode
-  attr_accessor :mark, :adjacents, :flagged, :bomb
+  attr_accessor :mark, :adjacents, :flagged, :bomb, :revealed
   attr_reader :children_with_bombs
 
   ADJACENTS = [
@@ -108,34 +108,37 @@ class Minesweeper
 
   def take_turn
     puts "Please enter a position, human. ([x,y])"
-    position = gets.chomp.to_a
-
+    position = []
+    gets.chomp.scan(/\d/).each do |d|
+      position << d.to_i
+    end
+    current_node = @board[position]
     puts "What do you want to do at this position?"
     puts "1 - uncover, 2 - flag"
 
     move = gets.chomp.to_i
-
     case move
     when 1 # uncover
-      if @board[position].bomb
+      p current_node.bomb
+      if current_node.bomb
         @bomb_splosion = true
         puts "It's a bomb!"
       else
-        @board[position].revealed = true
+        current_node.revealed = true
         # check children for bombs
         # display number
-        # bombs_count = 0
-        children = children(pos)
-        until children.empty?
-          child = children.shift
+        queue = current_node.children
+        until queue.empty?# it runs out of children w/o bombs
+          p queue
+          child = queue.shift
 
-          if is_bomb?(child)
-            return node if node.value == target
+          if child.bomb
+            next
           else
-            return node if prc.call(node)
+            child.revealed = true # should happen in to_s it, display #children_with_bombs
           end
 
-          children.concat(children(child))
+          queue.concat(child.children)
         end
       end
 
