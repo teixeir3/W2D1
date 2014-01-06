@@ -32,12 +32,13 @@ class BoardNode
   end
 
   def children_with_bombs
+    bombs = 0
     self.children.each do |child|
       if child.bomb
-        @children_with_bombs += 1
+        bombs += 1
       end
     end
-    @children_with_bombs
+    @children_with_bombs = bombs
   end
 
   def children
@@ -125,22 +126,28 @@ class Minesweeper
         puts "It's a bomb!"
       else
         current_node.revealed = true
-        # check children for bombs
-        # display number
-        queue = current_node.children
-        until queue.empty?# it runs out of children w/o bombs
-          p queue
-          child = queue.shift
 
-          if child.bomb
-            next
-          else
-            child.revealed = true # should happen in to_s it, display #children_with_bombs
+        current_node.children.each do |child|
+          unless child.bomb
+            child.revealed = true
           end
-
-          queue.concat(child.children)
         end
       end
+
+        # check children for bombs
+        # display number
+        # queue = current_node.children
+        # until queue.empty?# it runs out of children w/o bombs
+        #   p queue
+        #   child = queue.shift
+        #
+        #   if child.bomb
+        #     next
+        #   else
+        #     child.revealed = true # should happen in to_s it, display #children_with_bombs
+        #   end
+
+          # queue.concat(child.children)
 
     when 2 # flag
       # mark a flag
@@ -161,6 +168,7 @@ class Minesweeper
       end
     end
     make_bombs
+    update_bomb_counts
     nil
   end
 
@@ -177,6 +185,14 @@ class Minesweeper
     nil
   end
 
+  def update_bomb_counts
+    (0..8).each do |row|
+      (0..8).each do |col|
+        @board[[row, col]].children_with_bombs
+      end
+    end
+    nil
+  end
 
 
   def reveal
