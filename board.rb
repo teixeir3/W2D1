@@ -20,7 +20,7 @@ class Board
   end
 
   def []=(pos, mark)
-    raise "mark already placed there!" unless empty?(pos)
+    raise "mark already placed there!" unless self[pos].mark.nil?
 
     x, y = pos[0], pos[1]
     @rows[x][y] = mark
@@ -60,6 +60,6 @@ class Board
 
 
   def won?
-    ### put something here
+    ### won when all bombs are found?
   end
 end

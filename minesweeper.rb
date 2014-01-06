@@ -11,13 +11,11 @@ class BoardNode
 
   def to_s
     if @mark
-      puts @mark
+      @mark
     else
       "_"
     end
   end
-
-  #????
 
 end
 
@@ -91,8 +89,11 @@ class Minesweeper
     bombs_placed = 0
     until bombs_placed == BOMBS
       rand_node_position = [rand(9), rand(9)]
-      @board[rand_node_position].mark = :B
-      bombs_placed +=1
+
+      if @board[rand_node_position].mark.nil?
+        @board[rand_node_position].mark = :B
+        bombs_placed +=1
+      end
     end
     nil
   end
