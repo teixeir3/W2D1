@@ -1,8 +1,9 @@
 require './board.rb'
+require 'debugger'
 
 class BoardNode
   attr_accessor :mark, :adjacents, :flagged, :bomb, :revealed
-  attr_reader :children_with_bombs
+  attr_reader :children_with_bombs, :pos
 
   ADJACENTS = [
     # clockwise order
@@ -31,7 +32,7 @@ class BoardNode
 
   end
 
-  def children_with_bombs
+  def generate_child_bomb_count
     bombs = 0
     self.children.each do |child|
       if child.bomb
@@ -107,6 +108,22 @@ class Minesweeper
     bomb_splosion || won
   end
 
+  def reveal_from(current_node)
+    debugger
+    current_node.revealed = true
+    current_node.children.each do |child|
+      if child.bomb
+        next
+      elsif child.children_with_bombs > 0
+        child.revealed = true
+      elsif child.children_with_bombs == 0
+        reveal_from(child)
+      else
+        puts "something else happened."
+      end
+    end
+  end
+
   def take_turn
     puts "Please enter a position, human. ([x,y])"
     position = []
@@ -120,34 +137,13 @@ class Minesweeper
     move = gets.chomp.to_i
     case move
     when 1 # uncover
-      p current_node.bomb
       if current_node.bomb
         @bomb_splosion = true
         puts "It's a bomb!"
       else
-        current_node.revealed = true
-
-        current_node.children.each do |child|
-          unless child.bomb
-            child.revealed = true
-          end
-        end
+        reveal_from(current_node)
       end
 
-        # check children for bombs
-        # display number
-        # queue = current_node.children
-        # until queue.empty?# it runs out of children w/o bombs
-        #   p queue
-        #   child = queue.shift
-        #
-        #   if child.bomb
-        #     next
-        #   else
-        #     child.revealed = true # should happen in to_s it, display #children_with_bombs
-        #   end
-
-          # queue.concat(child.children)
 
     when 2 # flag
       # mark a flag
@@ -157,7 +153,7 @@ class Minesweeper
 
   end
 
-  def board_setup
+  def setup
     # pick number of bombs
     # this can be random, or based on difficulty, or whatever
     # we'll start with ten, the beginner setting
@@ -188,38 +184,29 @@ class Minesweeper
   def update_bomb_counts
     (0..8).each do |row|
       (0..8).each do |col|
-        @board[[row, col]].children_with_bombs
+        @board[[row, col]].generate_child_bomb_count
       end
     end
     nil
   end
-
-
-  def reveal
-    # if not bomb, then we reveal
-    # BFS of all adjacent cells - searches adj cells and children
-    #
-  end
-
-
-
-  #we are going to re-write this
-  def bfs(pos, &prc)
-    bombs_count = 0
-    children = children(pos)
-    until children.empty?
-      child = children.shift
-
-      if is_bomb?(child)
-        return node if node.value == target
-      else
-        return node if prc.call(node)
-      end
-
-      children.concat(children(child))
-    end
-    nil
-  end
+  #
+  # #we are going to re-write this
+  # def bfs(pos, &prc)
+  #   bombs_count = 0
+  #   children = children(pos)
+  #   until children.empty?
+  #     child = children.shift
+  #
+  #     if is_bomb?(child)
+  #       return node if node.value == target
+  #     else
+  #       return node if prc.call(node)
+  #     end
+  #
+  #     children.concat(children(child))
+  #   end
+  #   nil
+  # end
 
 
 end
