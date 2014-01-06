@@ -1,3 +1,4 @@
+# specifically for the Minesweeper game
 class Board
   attr_reader :rows
 
@@ -7,6 +8,8 @@ class Board
 
   def initialize(rows = self.class.blank_grid)
     @rows = rows
+    @flags = 0 # the number of flags; is this important?
+    @uncovered_spaces = 0
   end
 
   def show
@@ -19,34 +22,10 @@ class Board
     @rows[x][y]
   end
 
-  def []=(pos, mark)
-    raise "mark already placed there!" unless self[pos].mark.nil?
+  def []=(pos, node)
 
     x, y = pos[0], pos[1]
-    @rows[x][y] = mark
-  end
-
-  def cols
-    cols = [[], [], []]
-    @rows.each do |row|
-      row.each_with_index do |mark, col_idx|
-        cols[col_idx] << mark
-      end
-    end
-
-    cols
-  end
-
-  def diagonals
-    down_diag = [[0, 0], [1, 1], [2, 2]]
-    up_diag = [[0, 2], [1, 1], [2, 0]]
-
-    [down_diag, up_diag].map do |diag|
-      # Note the `x, y` inside the block; this unpacks, or
-      # "destructures" the argument. Read more here:
-      # http://tony.pitluga.com/2011/08/08/destructuring-with-ruby.html
-      diag.map { |x, y| @rows[x][y] }
-    end
+    @rows[x][y] = node
   end
 
   def dup
@@ -60,6 +39,10 @@ class Board
 
 
   def won?
-    ### won when all bombs are found?
+    ### won when:
+    # no of uncovered spaces == board size - no of bombs
+    # and
+    # revealed all non-bomb spaces
+    # flags are dealt with upon win
   end
 end

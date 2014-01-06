@@ -1,17 +1,40 @@
 require './board.rb'
 
 class BoardNode
-  attr_accessor :position, :mark, :adjacents
+  attr_accessor :mark, :adjacents, :flagged, :bomb
+  attr_reader :children_with_bombs
 
-  def initialize(mark = nil)
-    @position = nil
-    @mark = mark
+  def initialize(board, pos)
+    @position = pos
     @adjacents = nil
+    @board = board
+
+    #these get changed with user input
+    @flagged = false
+    @revealed = false
+
+    #these get changed in game-setup
+    @bomb = false
+    @children_with_bombs = 0
+
+
+    #fix game setup
   end
 
+  # visual aspects of a node:
+  # => number display (including 0, which is blank and clicked?)
+  # => flag
+  # => unclicked
+  #
+  # bomb or not
+
+
   def to_s
-    if @mark
-      @mark
+    # this is where rendering happens
+    if @revealed
+      @children_with_bombs
+    elsif @flagged
+      :F
     else
       "_"
     end
@@ -23,14 +46,7 @@ class Minesweeper
 
   BOMBS = 10
 
-  MARKS = {
-    # two for clicked
-    'bomb' => :B,
-    'safe' => :D, # GET IT???
-    # two for unclicked
-    'blank' => :_, # is this even necessary?
-    'flag' => :F,
-  }
+  # TO DO: make alternate displays / render for user and testers.
   ADJACENTS = [
     # clockwise order
     [-1, -1],
@@ -49,26 +65,62 @@ class Minesweeper
   def initialize
     @board = Board.new # take this out after testing
 
+
   end
 
   def play
     # put new board init here when starting to play
-    make_bombs
+    board_setup
 
+    # Take turn until game is over
+    until game_over?
+
+      take_turn
+
+    end
+
+
+  end
+
+  def game_over?
+    won || bomb_splosion
+  end
+
+  def take_turn
+    puts "Please enter a position, human. ([x,y])"
+    position = gets.chomp.to_a
+
+    puts "What do you want to do at this position?"
+    puts "1 - uncover, 2 - flag"
+
+    move = gets.chomp.to_i
+
+    case move
+    when 1 # uncover
+      # what's there?
+      # if  bomb, die
+      # => and display board
+      if @board[position] == :B
+      end
+      # if not, reveal, and reveal children until children have bombs
+      # => in which case, show number
+      # if on node, display # of children with bombs
+      # blank == no children with bombs
+
+    when 2 # flag
+      # mark a flag
+      @flags += 1
+      @board[position].flag = true
+    end
 
   end
 
   def is_bomb?(pos)
-    @board[pos] == :B ? true : false
+    @board[pos].mark == :B ? true : false
   end
 
-  def place_mark(pos, mark)
-    if @board.empty?(pos)
-      @board[pos] = mark
-      true
-    else
-      false
-    end
+  def set_mark(pos, mark)
+    @board[pos].mark = mark
   end
 
   def board_setup
@@ -78,7 +130,7 @@ class Minesweeper
     # expert would be 64
     (0..8).each do |row|
       (0..8).each do |col|
-        @board[[row, col]] = BoardNode.new
+        @board[[row, col]] = BoardNode.new(@board, [[row, col]])
       end
     end
     make_bombs
@@ -90,8 +142,8 @@ class Minesweeper
     until bombs_placed == BOMBS
       rand_node_position = [rand(9), rand(9)]
 
-      if @board[rand_node_position].mark.nil?
-        @board[rand_node_position].mark = :B
+      if @board[rand_node_position].bomb == false
+        @board[rand_node_position].bomb = true
         bombs_placed +=1
       end
     end
