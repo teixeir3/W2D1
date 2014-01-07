@@ -1,0 +1,814 @@
+--- &70124951607260 !ruby/object:Board
+rows:
+- - !ruby/object:BoardNode
+    pos:
+    - 0
+    - 0
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 0
+    - 1
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 0
+    - 2
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 0
+    - 3
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 0
+    - 4
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: false
+    bomb: true
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 0
+    - 5
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: false
+    bomb: false
+    children_with_bombs: 2
+  - !ruby/object:BoardNode
+    pos:
+    - 0
+    - 6
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: false
+    bomb: true
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 0
+    - 7
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: false
+    bomb: false
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 0
+    - 8
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: false
+    bomb: false
+    children_with_bombs: 0
+- - !ruby/object:BoardNode
+    pos:
+    - 1
+    - 0
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 1
+    - 1
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 1
+    - 2
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 1
+    - 3
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 1
+    - 4
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 1
+    - 5
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 2
+  - !ruby/object:BoardNode
+    pos:
+    - 1
+    - 6
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 2
+  - !ruby/object:BoardNode
+    pos:
+    - 1
+    - 7
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: false
+    bomb: false
+    children_with_bombs: 2
+  - !ruby/object:BoardNode
+    pos:
+    - 1
+    - 8
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: false
+    bomb: false
+    children_with_bombs: 1
+- - !ruby/object:BoardNode
+    pos:
+    - 2
+    - 0
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 2
+    - 1
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 2
+    - 2
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 2
+    - 3
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 2
+    - 4
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 2
+    - 5
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 2
+    - 6
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 2
+  - !ruby/object:BoardNode
+    pos:
+    - 2
+    - 7
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: false
+    bomb: true
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 2
+    - 8
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: false
+    bomb: false
+    children_with_bombs: 2
+- - !ruby/object:BoardNode
+    pos:
+    - 3
+    - 0
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 3
+    - 1
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 3
+    - 2
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 3
+    - 3
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 3
+    - 4
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 3
+    - 5
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 3
+    - 6
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 2
+  - !ruby/object:BoardNode
+    pos:
+    - 3
+    - 7
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: false
+    bomb: true
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 3
+    - 8
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: false
+    bomb: false
+    children_with_bombs: 2
+- - !ruby/object:BoardNode
+    pos:
+    - 4
+    - 0
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 4
+    - 1
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 4
+    - 2
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 4
+    - 3
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 4
+    - 4
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: false
+    bomb: true
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 4
+    - 5
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 4
+    - 6
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 4
+    - 7
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 4
+    - 8
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 1
+- - !ruby/object:BoardNode
+    pos:
+    - 5
+    - 0
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 5
+    - 1
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 5
+    - 2
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 5
+    - 3
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 5
+    - 4
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 5
+    - 5
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 1
+  - !ruby/object:BoardNode
+    pos:
+    - 5
+    - 6
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 5
+    - 7
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 5
+    - 8
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+- - !ruby/object:BoardNode
+    pos:
+    - 6
+    - 0
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 6
+    - 1
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 6
+    - 2
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 6
+    - 3
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 6
+    - 4
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 6
+    - 5
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 6
+    - 6
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 6
+    - 7
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 6
+    - 8
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+- - !ruby/object:BoardNode
+    pos:
+    - 7
+    - 0
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 7
+    - 1
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 7
+    - 2
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 7
+    - 3
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 7
+    - 4
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 7
+    - 5
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 7
+    - 6
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 7
+    - 7
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 7
+    - 8
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+- - !ruby/object:BoardNode
+    pos:
+    - 8
+    - 0
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 8
+    - 1
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 8
+    - 2
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 8
+    - 3
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 8
+    - 4
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 8
+    - 5
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 8
+    - 6
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 8
+    - 7
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+  - !ruby/object:BoardNode
+    pos:
+    - 8
+    - 8
+    adjacents: 
+    board: *70124951607260
+    flagged: false
+    revealed: true
+    bomb: false
+    children_with_bombs: 0
+uncovered_spaces: 13527
+bombs: 10
