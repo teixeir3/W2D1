@@ -1,6 +1,7 @@
 # specifically for the Minesweeper game
 class Board
   attr_reader :rows
+  attr_accessor :uncovered_spaces, :bombs
 
   def self.blank_grid
     Array.new(9) { Array.new(9) }
@@ -8,8 +9,8 @@ class Board
 
   def initialize(rows = self.class.blank_grid)
     @rows = rows
-    @flags = 0 # the number of flags; is this important?
     @uncovered_spaces = 0
+    @bombs = 0
   end
 
   def show
@@ -52,5 +53,7 @@ class Board
     # and
     # revealed all non-bomb spaces
     # flags are dealt with upon win
+    @uncovered_spaces >= (81 - @bombs) ? true : false #changed == to >=
   end
+
 end
